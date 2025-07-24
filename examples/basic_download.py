@@ -3,6 +3,7 @@ Example: Basic SharePoint document download
 """
 
 import os
+from dotenv import load_dotenv
 from sharepoint_scraper import SharePointScraper
 
 def main():
@@ -88,4 +89,5 @@ def main():
         print(f"Error: {e}")
 
 if __name__ == "__main__":
+    load_dotenv()  # Load environment variables from .env file
     main()

@@ -3,6 +3,7 @@ Example: SharePoint to Bedrock Knowledge Base integration
 """
 
 import os
+from dotenv import load_dotenv
 from sharepoint_scraper import SharePointScraper, BedrockIntegration
 
 def main():
@@ -132,4 +133,5 @@ def main():
         traceback.print_exc()
 
 if __name__ == "__main__":
+    load_dotenv()  # Load environment variables from .env file
     main()
