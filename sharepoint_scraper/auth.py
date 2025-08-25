@@ -74,18 +74,18 @@ class AuthCallbackHandler(BaseHTTPRequestHandler):
 class SharePointAuth:
     """Handles SharePoint authentication using Microsoft Graph API with OAuth 2.0"""
     
-    def __init__(self, client_id: str = None, tenant_id: str = None, redirect_uri: str = "http://localhost:8080/callback"):
+    def __init__(self, client_id: str = None, tenant_id: str = None, redirect_uri: str = None):
         """
         Initialize SharePoint authentication
         
         Args:
             client_id: Azure AD App Registration Client ID
             tenant_id: Azure AD Tenant ID  
-            redirect_uri: OAuth redirect URI (default: http://localhost:8080/callback)
+            redirect_uri: OAuth redirect URI (default: AZURE_REDIRECT_URI env var or http://localhost:8080/callback)
         """
         self.client_id = client_id or os.getenv('AZURE_CLIENT_ID')
         self.tenant_id = tenant_id or os.getenv('AZURE_TENANT_ID')
-        self.redirect_uri = redirect_uri
+        self.redirect_uri = redirect_uri or os.getenv('AZURE_REDIRECT_URI', "http://localhost:8080/callback")
         self.access_token = None
         self.token_response = None
         

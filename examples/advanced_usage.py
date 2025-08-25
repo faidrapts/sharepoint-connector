@@ -24,8 +24,8 @@ def main():
         print("\nSetting up custom authentication...")
         auth = SharePointAuth(
             client_id=client_id,
-            tenant_id=tenant_id,
-            redirect_uri="http://localhost:8080/callback"
+            tenant_id=tenant_id
+            # redirect_uri will use AZURE_REDIRECT_URI from env or default to http://localhost:8080/callback
         )
         
         # Authenticate first

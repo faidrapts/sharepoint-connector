@@ -99,6 +99,7 @@ scraper.bulk_download_and_ingest(documents, "downloads/")
 - `AZURE_CLIENT_ID`: Azure AD App Registration Client ID
 - `AZURE_TENANT_ID`: Azure AD Tenant ID
 - `AZURE_CLIENT_SECRET`: Azure AD Client Secret
+- `AZURE_REDIRECT_URI`: Azure Redirect URI
 
 #### Required for Bedrock Integration
 - `BEDROCK_KNOWLEDGE_BASE_ID`: AWS Bedrock Knowledge Base ID
@@ -112,7 +113,7 @@ scraper.bulk_download_and_ingest(documents, "downloads/")
 3. Set these values:
    - **Name**: SharePoint Scraper
    - **Supported account types**: Accounts in this organizational directory only
-   - **Redirect URI**: Web → `http://localhost:8080/callback` or configure it based on your application
+   - **Redirect URI**: Web → `http://localhost:8080/callback` or configure it based on your application. Make sure to also set the corresponding env variable AZURE_REDIRECT_URI as indicated above.
 4. After creation, note the **Application (client) ID**, **Directory (tenant) ID**, and navigate to Certificates & secrets > Create new client secret. Also note the **Client Secret ID**.
 5. Go to "API permissions" → Add permission → Microsoft Graph → Delegated permissions
 6. Add these permissions:
@@ -283,7 +284,7 @@ from sharepoint_scraper import SharePointScraper, SharePointAuth
 auth = SharePointAuth(
     client_id="your-client-id",
     tenant_id="your-tenant-id",  # Optional
-    redirect_uri="http://localhost:8080/callback"  # Default
+    redirect_uri="http://localhost:8080/callback"  # change as desired
 )
 
 # Authenticate

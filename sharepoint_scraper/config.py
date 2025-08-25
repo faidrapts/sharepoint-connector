@@ -17,7 +17,7 @@ class SharePointConfig:
     client_id: str
     tenant_id: Optional[str] = None
     client_secret: Optional[str] = None
-    redirect_uri: str = "http://localhost:8080/callback"
+    redirect_uri: str = None
 
 
 @dataclass 
