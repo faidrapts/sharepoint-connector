@@ -1,6 +1,6 @@
 # SharePoint Document Scraper
 
-A Python package for authenticating with SharePoint and downloading documents using Microsoft Graph API with support for MFA and optional AWS Bedrock knowledge base ingestion.
+A Python package for authenticating with SharePoint (user-level permissions) and downloading documents using Microsoft Graph API with support for MFA and optional AWS Bedrock knowledge base ingestion (custom data source).
 
 ## Features
 
@@ -32,6 +32,7 @@ export SHAREPOINT_SITE_URL="https://yourcompany.sharepoint.com/sites/yoursite"
 export AZURE_CLIENT_ID="your-azure-app-client-id"
 export AZURE_CLIENT_SECRET="your-azure-client-secret"
 export AZURE_TENANT_ID="your-tenant-id"
+export AZURE_REDIRECT_URI="your-redirect-uri" # for local testing: http://localhost:8080/callback
 ```
 
 2. **Test connection**:
