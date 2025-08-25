@@ -26,11 +26,12 @@ pip install sharepoint-scraper[bedrock]
 
 ### Command Line Usage
 
-1. **Set up environment variables**:
+1. **Set up environment variables** (if you do not have the required Azure values please first follow the "Azure AD App Registration Setup" instructions from the Configuration section below):
 ```bash
 export SHAREPOINT_SITE_URL="https://yourcompany.sharepoint.com/sites/yoursite"
 export AZURE_CLIENT_ID="your-azure-app-client-id"
-export AZURE_TENANT_ID="your-tenant-id"  # Optional
+export AZURE_CLIENT_SECRET="your-azure-client-secret"
+export AZURE_TENANT_ID="your-tenant-id"
 ```
 
 2. **Test connection**:
@@ -96,10 +97,8 @@ scraper.bulk_download_and_ingest(documents, "downloads/")
 #### Required for SharePoint
 - `SHAREPOINT_SITE_URL`: Your SharePoint site URL
 - `AZURE_CLIENT_ID`: Azure AD App Registration Client ID
-
-#### Optional for SharePoint
-- `AZURE_TENANT_ID`: Azure AD Tenant ID (auto-detected if not provided)
-- `AZURE_CLIENT_SECRET`: Azure AD Client Secret (for app-only auth)
+- `AZURE_TENANT_ID`: Azure AD Tenant ID
+- `AZURE_CLIENT_SECRET`: Azure AD Client Secret
 
 #### Required for Bedrock Integration
 - `BEDROCK_KNOWLEDGE_BASE_ID`: AWS Bedrock Knowledge Base ID
@@ -113,8 +112,8 @@ scraper.bulk_download_and_ingest(documents, "downloads/")
 3. Set these values:
    - **Name**: SharePoint Scraper
    - **Supported account types**: Accounts in this organizational directory only
-   - **Redirect URI**: Web → `http://localhost:8080/callback`
-4. After creation, note the **Application (client) ID**
+   - **Redirect URI**: Web → `http://localhost:8080/callback` or configure it based on your application
+4. After creation, note the **Application (client) ID**, **Directory (tenant) ID**, and navigate to Certificates & secrets > Create new client secret. Also note the **Client Secret ID**.
 5. Go to "API permissions" → Add permission → Microsoft Graph → Delegated permissions
 6. Add these permissions:
    - `Sites.Read.All`
